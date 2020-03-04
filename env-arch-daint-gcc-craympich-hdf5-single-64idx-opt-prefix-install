@@ -1,0 +1,9 @@
+module unload PrgEnv-cray cray-hdf5-parallel cray-hdf5 cray-mpich cray-libsci
+module load PrgEnv-gnu cray-mpich/7.7.10 cray-libsci/19.06.1 cray-hdf5-parallel/1.10.5.1
+module load cudatoolkit
+module list
+
+export PETSC_DIR=$PROJECT/petsc
+export PETSC_ARCH=arch-daint-gcc-craympich-hdf5-single-64idx-opt-prefix
+echo PETSC_DIR=$PETSC_DIR
+echo PETSC_ARCH=$PETSC_ARCH

@@ -1,0 +1,8 @@
+module unload PrgEnv-gnu cray-hdf5-parallel cray-hdf5 cray-mpich cray-libsci
+module load PrgEnv-cray cray-mpich/7.7.10 cray-libsci/19.06.1 cray-hdf5-parallel/1.10.5.1
+module list
+
+export PETSC_DIR=/project/s961/haplav/petsc
+export PETSC_ARCH=arch-daint-craycc-craympich-libsci-hdf5-64idx-opt
+echo PETSC_DIR=$PETSC_DIR
+echo PETSC_ARCH=$PETSC_ARCH
