@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 ## needed conda packages
-# conda install cython numpy hdf5 make mpich mkl c-compiler fortran-compiler valgrind yaml
+# conda install mpich cython numpy hdf5='*=mpi*' make metis parmetis mkl c-compiler cxx-compiler fortran-compiler yaml
 
 import os
 
@@ -21,19 +21,21 @@ configure_options = [
   'CXXFLAGS=' + CXXFLAGS,
   'FFLAGS=' + FFLAGS,
   #'--download-petsc4py',
+  '--download-ptscotch',
   '--download-sowing',
   '--with-blaslapack-dir=' + CONDA_PREFIX,
   '--with-debugging=1',
   '--with-hdf5-dir=' + CONDA_PREFIX,
   '--with-make-dir=' + CONDA_PREFIX,
+  '--with-metis-dir=' + CONDA_PREFIX,
   '--with-mpi-dir=' + CONDA_PREFIX,
+  '--with-parmetis-dir=' + CONDA_PREFIX,
   '--with-python-dir=' + CONDA_PREFIX,
   '--with-python-exec=%s/bin/python' % CONDA_PREFIX,
   '--with-shared-libraries=1',
   '--with-single-library=1',
-  '--with-valgrind-dir=' + CONDA_PREFIX,
-  '--with-yaml-dir=' + CONDA_PREFIX,
   '--with-x=0',
+  '--with-yaml-dir=' + CONDA_PREFIX,
 ]
 
 if __name__ == '__main__':
