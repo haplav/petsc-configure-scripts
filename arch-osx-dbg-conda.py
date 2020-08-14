@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 ## needed conda packages
-# conda install mpich cython numpy hdf5='*=mpi*' make metis parmetis mkl c-compiler cxx-compiler fortran-compiler yaml
+# conda install  c-compiler cxx-compiler fortran-compiler  cmake cython eigen hdf5='*=mpi*' make metis mkl mpich numpy parmetis tetgen triangle yaml
+# conda update --all hdf5='*=mpi*'
 
 import os
 
@@ -20,10 +21,15 @@ configure_options = [
   'CFLAGS=' + CFLAGS,
   'CXXFLAGS=' + CXXFLAGS,
   'FFLAGS=' + FFLAGS,
+  '--download-ctetgen',
+  '--download-med',
   #'--download-petsc4py',
+  '--download-pragmatic',
   '--download-ptscotch',
   '--download-sowing',
   '--with-blaslapack-dir=' + CONDA_PREFIX,
+  '--with-cmake-dir=' + CONDA_PREFIX,
+  '--with-eigen-dir=' + CONDA_PREFIX,
   '--with-debugging=1',
   '--with-hdf5-dir=' + CONDA_PREFIX,
   '--with-make-dir=' + CONDA_PREFIX,
@@ -32,8 +38,11 @@ configure_options = [
   '--with-parmetis-dir=' + CONDA_PREFIX,
   '--with-python-dir=' + CONDA_PREFIX,
   '--with-python-exec=%s/bin/python' % CONDA_PREFIX,
+  '--with-scalar-type=real',
   '--with-shared-libraries=1',
   '--with-single-library=1',
+  '--with-tetgen-dir=' + CONDA_PREFIX,
+  '--with-triangle-dir=' + CONDA_PREFIX,
   '--with-x=0',
   '--with-yaml-dir=' + CONDA_PREFIX,
 ]
