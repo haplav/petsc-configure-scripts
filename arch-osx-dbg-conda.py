@@ -42,7 +42,8 @@ configure_options = [
   '--with-shared-libraries=1',
   '--with-single-library=1',
   '--with-tetgen-dir=' + CONDA_PREFIX,
-  '--with-triangle-dir=' + CONDA_PREFIX,
+  '--with-triangle-include=%s/include' % CONDA_PREFIX,
+  '--with-triangle-lib=-L%s/lib -ltri' % CONDA_PREFIX,
   '--with-x=0',
   '--with-yaml-dir=' + CONDA_PREFIX,
 ]
