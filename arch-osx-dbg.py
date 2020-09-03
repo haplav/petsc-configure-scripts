@@ -22,6 +22,7 @@ configure_options = [
   '--download-ptscotch',
   '--download-libpng=1',
   '--download-libjpeg=1',
+  '--with-macos-firewall-rules',
   '--with-zlib=1',
   ]
 

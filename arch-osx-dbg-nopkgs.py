@@ -14,6 +14,7 @@ configure_options = [
   '--download-f2cblaslapack=1',
   '--download-mpich=1',
   '--download-mpich-device=ch3:nemesis', #for some reason runex174_2_elemental takes very long with ch3:p4
+  '--with-macos-firewall-rules',
   ]
 
 if __name__ == '__main__':

@@ -27,6 +27,7 @@ configure_options = [
   '--with-cmake-dir=' + CONDA_PREFIX,
   '--with-debugging=1',
   '--with-hdf5-dir=' + CONDA_PREFIX,
+  '--with-macos-firewall-rules',
   '--with-make-dir=' + CONDA_PREFIX,
   '--with-mpi-dir=' + CONDA_PREFIX,
   '--with-python-dir=' + CONDA_PREFIX,

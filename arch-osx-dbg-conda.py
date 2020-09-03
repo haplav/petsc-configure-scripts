@@ -32,6 +32,7 @@ configure_options = [
   '--with-eigen-dir=' + CONDA_PREFIX,
   '--with-debugging=1',
   '--with-hdf5-dir=' + CONDA_PREFIX,
+  '--with-macos-firewall-rules',
   '--with-make-dir=' + CONDA_PREFIX,
   '--with-metis-dir=' + CONDA_PREFIX,
   '--with-mpi-dir=' + CONDA_PREFIX,
