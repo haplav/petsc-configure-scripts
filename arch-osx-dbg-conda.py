@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 ## needed conda packages
-# conda install  c-compiler cxx-compiler fortran-compiler  cmake cython eigen hdf5='*=mpi*' make metis mkl mpich numpy parmetis tetgen triangle yaml
+# conda install  c-compiler cxx-compiler fortran-compiler  cmake cython eigen hdf5='*=mpi*' make metis mkl mpich numpy parmetis tetgen triangle yaml zlib
 # conda update --all hdf5='*=mpi*'
 
 import os
@@ -21,12 +21,17 @@ configure_options = [
   'CFLAGS=' + CFLAGS,
   'CXXFLAGS=' + CXXFLAGS,
   'FFLAGS=' + FFLAGS,
+  '--download-chaco',
   '--download-ctetgen',
+  '--download-exodusii',
   '--download-med',
+  '--download-netcdf',
+  '--download-pnetcdf',
   #'--download-petsc4py',
   '--download-pragmatic',
   '--download-ptscotch',
   '--download-sowing',
+  '--download-triangle',
   '--with-blaslapack-dir=' + CONDA_PREFIX,
   '--with-cmake-dir=' + CONDA_PREFIX,
   '--with-eigen-dir=' + CONDA_PREFIX,
@@ -43,14 +48,17 @@ configure_options = [
   '--with-shared-libraries=1',
   '--with-single-library=1',
   '--with-tetgen-dir=' + CONDA_PREFIX,
-  '--with-triangle-include=%s/include' % CONDA_PREFIX,
-  '--with-triangle-lib=-L%s/lib -ltri' % CONDA_PREFIX,
+  #'--with-triangle-include=%s/include' % CONDA_PREFIX,
+  #'--with-triangle-lib=-L%s/lib -ltri' % CONDA_PREFIX,
   '--with-x=0',
   '--with-yaml-dir=' + CONDA_PREFIX,
+  '--with-zlib-dir=' + CONDA_PREFIX,
 ]
 
 if __name__ == '__main__':
   import sys,os
+  #import time
+  #time.sleep(10)
   sys.path.insert(0,os.path.abspath('config'))
   import configure
   configure.petsc_configure(configure_options)
