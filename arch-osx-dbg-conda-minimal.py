@@ -30,7 +30,6 @@ configure_options = [
   '--with-macos-firewall-rules',
   '--with-make-dir=' + CONDA_PREFIX,
   '--with-mpi-dir=' + CONDA_PREFIX,
-  '--with-python-dir=' + CONDA_PREFIX,
   '--with-python-exec=%s/bin/python' % CONDA_PREFIX,
   '--with-scalar-type=real',
   '--with-shared-libraries=1',
