@@ -9,23 +9,27 @@ import os
 CONDA_PREFIX = os.getenv('CONDA_PREFIX')
 CPPFLAGS = os.getenv('CPPFLAGS')
 FFLAGS  = '-g -O0 -pipe -Wall -Wno-strict-aliasing -fstack-protector-strong'
-CFLAGS = FFLAGS + ' -Wwrite-strings -Wno-unknown-pragmas'
+CFLAGS = FFLAGS + ' -Wwrite-strings -Wno-unknown-pragmas -m64'
 CXXFLAGS = CFLAGS + ' -fvisibility=hidden'
+# Conda uses -Wl,-headerpad_max_install_names
+# Conda uses -Wl,-dead_strip_dylibs but it doesn't work well with petsc4py because it does not add all dependencies to libpetsc.dylib
+LDFLAGS = '-L%s/lib -Wl,-rpath,%s/lib' % (CONDA_PREFIX, CONDA_PREFIX)
 
 configure_options = [
   'AR=' + os.getenv('AR'),
   'CPPFLAGS=' + CPPFLAGS,
   'CXXPPFLAGS=' + CPPFLAGS,
-  'LDFLAGS=-Wl,-headerpad_max_install_names -Wl,-dead_strip_dylibs -Wl,-rpath,%s/lib -L%s/lib' % (CONDA_PREFIX, CONDA_PREFIX),
+  'LDFLAGS=' + LDFLAGS,
   'RANLIB=' + os.getenv('RANLIB'),
   'CFLAGS=' + CFLAGS,
   'CXXFLAGS=' + CXXFLAGS,
   'FFLAGS=' + FFLAGS,
   #'--download-petsc4py',
   '--download-sowing',
-  '--with-blaslapack-dir=' + CONDA_PREFIX,
+  '--with-blaslapack-lib=-lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm -ldl',
   '--with-cmake-dir=' + CONDA_PREFIX,
   '--with-debugging=1',
+  '--with-fc=0',
   '--with-hdf5-dir=' + CONDA_PREFIX,
   '--with-macos-firewall-rules',
   '--with-make-dir=' + CONDA_PREFIX,
